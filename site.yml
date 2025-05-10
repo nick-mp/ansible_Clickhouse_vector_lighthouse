@@ -77,7 +77,7 @@
         enabled: yes
 
   handlers:
-    - name: Restart vector
+    - name: Restart Vector
       become: true
       ansible.builtin.service:
         name: vector
