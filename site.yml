@@ -121,11 +121,10 @@
 
     - name: Unzip lighthouse files
       become: true
-      ansible.builtin.unarchive:
-        src: /tmp/lighthouse.zip
-        dest: /usr/share/nginx/html/lighthouse
-        remote_src: yes
-        extra_opts: [--strip-components=1, -o]
+      ansible.builtin.command:
+        cmd: "unzip -o /tmp/lighthouse.zip -d /usr/share/nginx/html/lighthouse"
+      args:
+        creates: /usr/share/nginx/html/lighthouse/index.html
 
     - name: Configure nginx
       become: true
