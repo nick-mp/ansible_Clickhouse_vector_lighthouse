@@ -1,6 +1,6 @@
 # Домашнее задание к занятию 2 «Работа с Playbook»
 
-   ![Task](https://github.com/nick-mp/ansible_Clickhouse_vector_lighthouse/main/img/logo_Vector.png)
+   ![Task](https://github.com/nick-mp/ansible_Clickhouse_vector_lighthouse/blob/main/img/logo_Vector.png)
 
    ![Task](https://github.com/nick-mp/ansible_Clickhouse_vector_lighthouse/blob/main/img/logo_ClickHouse.png)
 
