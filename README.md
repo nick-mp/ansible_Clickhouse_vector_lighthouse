@@ -41,6 +41,8 @@ In the file `inventories/host.yml` configure the node details.
    ![Task](https://github.com/nick-mp/ansible_Clickhouse_vector_lighthouse/blob/main/img/8.png)
 
 
+есть изменения в таске распаковки lighthouse они из-за того что применяется команда unzip через командную строку.
+
 ### Как оформить решение задания
 
 Выполненное домашнее задание пришлите в виде ссылки на .md-файл в вашем репозитории.
