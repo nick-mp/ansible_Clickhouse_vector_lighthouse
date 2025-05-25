@@ -2,7 +2,7 @@ server {
     listen 80;
     server_name _;
 
-    root /usr/share/nginx/html/lighthouse;
+    root {{ lighthouse_nginx_root }};
     index index.html;
 
     location / {

@@ -1,48 +1,87 @@
-# Домашнее задание к занятию 2 «Работа с Playbook»
+# Ansible Playbook для Clickhouse, Vector и LightHouse
 
-   ![Task](https://github.com/nick-mp/ansible_Clickhouse_vector_lighthouse/blob/main/img/logo_Vector.png)
+Этот playbook устанавливает и настраивает стек для сбора и визуализации логов, состоящий из:
+- Clickhouse - колоночной СУБД для хранения логов
+- Vector - инструмента для сбора и обработки логов
+- LightHouse - веб-интерфейса для просмотра логов
 
-   ![Task](https://github.com/nick-mp/ansible_Clickhouse_vector_lighthouse/blob/main/img/logo_ClickHouse.png)
+## Структура проекта
 
-   ![Task](https://github.com/nick-mp/ansible_Clickhouse_vector_lighthouse/blob/main/img/lighthouse.png)   
+```
+ansible_Clickhouse_vector_lighthouse/
+├── clickhouse-role/     # Роль для установки и настройки Clickhouse
+├── vector-role/         # Роль для установки и настройки Vector
+├── lighthouse-role/     # Роль для установки и настройки LightHouse
+├── group_vars/          # Переменные для групп хостов
+├── inventory/           # Инвентарь хостов
+├── templates/           # Шаблоны конфигураций
+├── requirements.yml     # Зависимости ролей
+└── site.yml            # Основной playbook
+```
 
+## Требования
 
+- Ansible 2.9 или выше
+- CentOS/RHEL 7 или выше
+- Доступ к интернету для загрузки пакетов
 
-## Version 
+## Роли
 
-clickhouse_version: "22.3.3.44"
+### Clickhouse Role
 
-vector_version: "0.39.0"
+Роль для установки и настройки Clickhouse - колоночной СУБД для аналитики.
 
-### Prerequisite
+Основные функции:
+- Установка Clickhouse из официальных репозиториев
+- Настройка сервиса
+- Создание базы данных для логов
 
-- **Ansible 2.9+**
+### Vector Role
 
-### Configure
+Роль для установки и настройки Vector - инструмента для сбора и обработки логов.
 
-In the file `inventories/host.yml` configure the node details.
+Основные функции:
+- Установка Vector из официальных репозиториев
+- Настройка конфигурации для сбора логов
+- Настройка сервиса
 
-### Install
+### LightHouse Role
 
-    # Deploy with ansible playbook - run the playbook as root
+Роль для установки и настройки LightHouse - веб-интерфейса для просмотра логов.
 
- 
-6. Попробуйте запустить playbook на этом окружении с флагом `--check`.
+Основные функции:
+- Установка и настройка nginx
+- Загрузка и установка LightHouse
+- Настройка веб-сервера
 
-   ![Task](https://github.com/nick-mp/ansible_Clickhouse_vector_lighthouse/blob/main/img/6.png)
+## Использование
 
+1. Клонируйте репозиторий:
+```bash
+git clone <repository-url>
+cd ansible_Clickhouse_vector_lighthouse
+```
 
-7. Запустите playbook на `prod.yml` окружении с флагом `--diff`. Убедитесь, что изменения на системе произведены.
+2. Установите зависимости:
+```bash
+ansible-galaxy install -r requirements.yml
+```
 
-   ![Task](https://github.com/nick-mp/ansible_Clickhouse_vector_lighthouse/blob/main/img/7.png)
+3. Настройте инвентарь в директории `inventory/`
 
-8. Повторно запустите playbook с флагом `--diff` и убедитесь, что playbook идемпотентен.
+4. Запустите playbook:
+```bash
+ansible-playbook -i inventory/prod.yml site.yml
+```
 
-   ![Task](https://github.com/nick-mp/ansible_Clickhouse_vector_lighthouse/blob/main/img/8.png)
+## Переменные
 
+Основные переменные для каждой роли находятся в соответствующих директориях:
+- `clickhouse-role/defaults/main.yml`
+- `vector-role/defaults/main.yml`
+- `lighthouse-role/defaults/main.yml`
 
-есть изменения в таске распаковки lighthouse они из-за того что применяется команда unzip через командную строку.
+## Лицензия
 
-### Как оформить решение задания
+MIT
 
-Выполненное домашнее задание пришлите в виде ссылки на .md-файл в вашем репозитории.

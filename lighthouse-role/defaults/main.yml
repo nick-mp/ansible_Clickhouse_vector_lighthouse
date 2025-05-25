@@ -1,0 +1,8 @@
+---
+# defaults file for lighthouse-role
+
+lighthouse_nginx_root: /usr/share/nginx/html/lighthouse
+lighthouse_nginx_conf_path: /etc/nginx/conf.d/lighthouse.conf
+lighthouse_nginx_service: nginx
+lighthouse_zip_url: https://github.com/VKCOM/lighthouse/archive/refs/heads/master.zip
+lighthouse_zip_path: /tmp/lighthouse.zip

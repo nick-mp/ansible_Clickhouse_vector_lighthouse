@@ -1,0 +1,9 @@
+#SPDX-License-Identifier: MIT-0
+---
+# handlers file for lighthouse-role
+
+- name: Restart nginx
+  become: true
+  ansible.builtin.service:
+    name: "{{ lighthouse_nginx_service }}"
+    state: restarted

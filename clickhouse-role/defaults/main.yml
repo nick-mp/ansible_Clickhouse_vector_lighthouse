@@ -1,6 +1,10 @@
 ---
+# defaults file for clickhouse-role
+
 clickhouse_version: "22.3.3.44"
 clickhouse_packages:
   - clickhouse-client
   - clickhouse-server
   - clickhouse-common-static
+clickhouse_service_name: clickhouse-server
+clickhouse_database: logs
